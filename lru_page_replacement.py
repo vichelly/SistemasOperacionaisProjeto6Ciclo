@@ -1,5 +1,3 @@
-import sys
-
 def lru_page_replacement(page_size, page_sequence):
     # Inicializa a memória com -1 para indicar posições vazias
     memory = [-1] * page_size
@@ -54,21 +52,21 @@ def lru_page_replacement(page_size, page_sequence):
 
     # Exibe as estatísticas finais
     total_accesses = page_hits + page_faults
+    miss_rate = (page_faults / total_accesses) * 100 if total_accesses > 0 else 0
+    hit_rate = (page_hits / total_accesses) * 100 if total_accesses > 0 else 0
 
     print("--- Final Statistics ---")
-    print(f"Hit rate ({page_hits}/{total_accesses}):")
-    print(f"Miss rate ({page_faults}/{total_accesses}):")
+    print(f"Hit rate ({page_hits}/{total_accesses}): {hit_rate:.2f}%")
+    print(f"Miss rate ({page_faults}/{total_accesses}): {miss_rate:.2f}%")
 
-# Função principal para capturar os argumentos de entrada
+# Função principal para capturar a entrada do usuário
 def main():
-    if len(sys.argv) < 3:
-        print("Usage: python lru_page_replacement.py <page_size> <page_sequence>")
-        print("Example: python lru_page_replacement.py 3 1,3,5,4,2,4,2,3,2")
-        return
-    
-    # Lê os argumentos de entrada
-    page_size = int(sys.argv[1])
-    page_sequence = list(map(int, sys.argv[2].split(',')))
+    # Solicita entrada do usuário
+    page_size = int(input("Digite o tamanho da memória (número de páginas): "))
+    page_sequence_input = input("Digite a sequência de páginas (separadas por vírgula): ")
+
+    # Convertendo a sequência de páginas em uma lista de inteiros
+    page_sequence = list(map(int, page_sequence_input.split(',')))
 
     # Executa o algoritmo LRU
     lru_page_replacement(page_size, page_sequence)
