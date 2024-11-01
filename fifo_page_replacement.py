@@ -37,12 +37,10 @@ def fifo_page_replacement(page_size, page_sequence):
 
     # Exibe as estatísticas finais
     total_accesses = page_hits + page_faults
-    miss_rate = (page_faults / total_accesses) * 100
-    hit_rate = (page_hits / total_accesses) * 100
 
     print("--- Final Statistics ---")
-    print(f"Hit rate ({page_hits}/{total_accesses}): {hit_rate:.2f}%")
-    print(f"Miss rate ({page_faults}/{total_accesses}): {miss_rate:.2f}%")
+    print(f"Hit rate ({page_hits}/{total_accesses}):")
+    print(f"Miss rate ({page_faults}/{total_accesses}):")
 
 # Função principal para capturar os argumentos de entrada
 def main():
