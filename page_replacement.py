@@ -1,12 +1,11 @@
 def fifo_page_replacement(page_size, page_sequence):
-    memory = [-1] * page_size  # Inicializa a memória com -1
-    page_faults = 0            # Contador de faltas de página (miss)
-    page_hits = 0              # Contador de acertos de página (hit)
-    next_replace_index = 0     # Índice da próxima página a ser substituída (ciclo FIFO)
+    memory = [-1] * page_size  
+    page_faults = 0            
+    page_hits = 0              
+    next_replace_index = 0     
 
     print("FIFO Page Replacement Simulation\n")
 
-    # Processa cada página na sequência
     for page in page_sequence:
         print(f"page: {page}")
 
@@ -27,7 +26,7 @@ def fifo_page_replacement(page_size, page_sequence):
                     print(f"[{p:2}]")
             next_replace_index = (next_replace_index + 1) % page_size
 
-        print("")  # Linha em branco para separar cada passo
+        print("") 
 
     total_accesses = page_hits + page_faults
 
